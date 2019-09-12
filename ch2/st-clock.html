@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  </head><body>
+    <div id="root"></div>
+    <script type="text/babel">
+    class SClock extends React.Component {
+      constructor (props){
+        super(props)
+        this.state = {
+          now: (new Date())
+        }
+        setInterval(e => {
+          this.setState({ now: (new Date())})
+        }, 1000)
+      }
+
+      render () {
+        const now = this.state.now
+        const hh = this.fmf(now.getHours())
+        const mm = this.fmf(now.getMinutes())
+        const ss = this.fmf(now.getSeconds())
+        return (<div>{hh}:{mm}:{ss}</div>)
+      }
+      fmf (v) {
+        const  s = "00" + v
+        return s.substr(s.length - 2, 2)
+      }
+    }
+      ReactDOM.render(<div><SClock /></div>,
+        document.getElementById('root'))
+        </script>
+    </body>
+    </html>
