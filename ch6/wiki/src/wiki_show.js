@@ -37,13 +37,13 @@ class WikiShow extends React.Component {
       </div>
     )
   }
+  //わからない↓
   convertText(src) { //wiki記法をreactオブジェクトに変換する関数作成
     //wiki記法をパースして配列データに変換
     const nodes = WikiParser.parse(src)
     console.log(nodes)
     // 各要素をReactの要素に変換
     const lines = nodes.map((e, i) => {
-//わからない↓
       if(e.tag === 'ul') {
         const lis = e.items.map(
           (s, j) => <li key={`node${i}_${j}`}>{s}</li>
